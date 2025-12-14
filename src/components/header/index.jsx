@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import UserActionTypes from "../../redux/User/action-types";
 
 // Components
 import Cart from "../cart/index";
 
 // Styles
 import * as Styles from "./styles";
+import { loginUser, logoutUser } from "../../redux/User/actions";
 
 
 function Header() {
@@ -20,17 +22,21 @@ function Header() {
   };
 
   const handleLoginClick = () => {
-    dispatch({
-      type: 'user/login',
-      payload: {name: 'Felipe', email: 'felipe@gmail.com'}
-    })
+    dispatch(loginUser({name: 'Felipe', email: 'felipe@gmail.com'}))
+  }
+
+  const handleLogoutClick = () => {
+    dispatch(logoutUser())
   }
 
   return (
     <Styles.Container>
       <Styles.Logo>Redux Shopping</Styles.Logo>
       <Styles.Buttons>
-        <div onClick={handleLoginClick}>Login</div>
+        {currentUser ? (
+          <div onClick={handleLogoutClick}>Sair</div>):
+          (<div onClick={handleLoginClick}>Login</div>)
+        }
         <div onClick={handleCartClick}>Carrinho</div>
       </Styles.Buttons>
 
