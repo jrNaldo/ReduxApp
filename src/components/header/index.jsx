@@ -1,6 +1,5 @@
-import { useMemo, useState } from "react";
+import {useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import UserActionTypes from "../../redux/User/action-types";
 
 // Components
 import Cart from "../cart/index";

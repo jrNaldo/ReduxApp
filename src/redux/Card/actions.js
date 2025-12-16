@@ -1,10 +1,5 @@
 import CardActionsTypes from "./action-types";
 
-export const addProductToCart = (payload) => ({
-    type: CardActionsTypes.ADD_PRODUCT,
-    payload,
-})
-
 export const removeProductFromCart = (payload) => ({
     type: CardActionsTypes.REMOVE_PRODUCT,
     payload,

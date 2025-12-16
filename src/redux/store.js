@@ -4,10 +4,13 @@
 // 4 - Coloque Provider no seu App
 
 //Base do Redux -  Cria o rootReducer e User Reducer
-import {createStore, applyMiddleware} from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 import rootReducer from './rootReducer.js'
 
-const store = createStore(rootReducer, applyMiddleware(logger))
+const store = configureStore({ // No campo reducer, add o rootReducer, que contem todos os reducers
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+})
 
 export default store
